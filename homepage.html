@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Art Portfolio - Homepage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        /* Custom styles for the dropdown menu */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 100;
+            border-radius: 0.5rem; /* Rounded corners for dropdown */
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+        .dropdown-menu a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 0.75rem; /* Rounded corners */
+            object-fit: contain; /* Ensures the image fits within the modal without cropping */
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-lightbox:hover,
+        .close-lightbox:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive image grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .image-grid img {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Crop images to fit */
+            border-radius: 0.75rem; /* Rounded corners */
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .image-grid img:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 rounded-b-xl">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <!-- Logo/Site Title -->
+            <a href="#" class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">Baggiemax Art</a>
+
+            <!-- Navigation -->
+            <nav>
+                <ul class="flex flex-wrap justify-center md:space-x-8 space-x-4">
+                    <li><a href="#" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-200 rounded-md px-3 py-2">Homepage</a></li>
+                    <li><a href="#about-us" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-200 rounded-md px-3 py-2">About Us</a></li>
+                    <!-- Gallery Dropdown -->
+                    <li class="relative dropdown">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-200 rounded-md px-3 py-2 flex items-center">
+                            Gallery
+                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="paintings.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paintings</a></li>
+                            <li><a href="#complementary" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Complementary</a></li>
+                            <li><a href="#still-life" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Still Life</a></li>
+                            <li><a href="#animals" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Animals</a></li>
+							<li><a href="#glastonbury" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Glastonbury</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact-me" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-200 rounded-md px-3 py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto my-8 p-6 bg-white shadow-lg rounded-xl">
+        <section id="homepage" class="mb-12">
+            <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Welcome to My Artistic Journey</h1>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">
+                Dive into a world of color and expression. Here, you'll find a curated selection of my acrylic works, from vibrant landscapes to intricate still life pieces.
+                As a fellow creative who loves painting with acrylics to relax, I totally get the joy of putting brush to canvas.
+            </p>
+
+            <!-- Image Gallery Section -->
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Featured Works</h2>
+            <div class="image-grid">
+                <!-- Example Images (replace with your actual image URLs) -->
+                <img src="https://placehold.co/600x400/FFDDC1/333333?text=Painting+1" alt="Painting 1" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/FFDDC1/333333?text=Painting+1+Large">
+                <img src="https://placehold.co/600x400/C1FFDD/333333?text=Painting+2" alt="Painting 2" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/C1FFDD/333333?text=Painting+2+Large">
+                <img src="https://placehold.co/600x400/DDC1FF/333333?text=Painting+3" alt="Painting 3" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/DDC1FF/333333?text=Painting+3+Large">
+                <img src="https://placehold.co/600x400/FFC1DD/333333?text=Painting+4" alt="Painting 4" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/FFC1DD/333333?text=Painting+4+Large">
+                <img src="https://placehold.co/600x400/C1DDFF/333333?text=Painting+5" alt="Painting 5" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/C1DDFF/333333?text=Painting+5+Large">
+                <img src="https://placehold.co/600x400/DDFFC1/333333?text=Painting+6" alt="Painting 6" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/DDFFC1/333333?text=Painting+6+Large">
+                <img src="https://placehold.co/600x400/FFC1C1/333333?text=Painting+7" alt="Painting 7" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/FFC1C1/333333?text=Painting+7+Large">
+                <img src="https://placehold.co/600x400/C1FFC1/333333?text=Painting+8" alt="Painting 8" class="rounded-lg shadow-md" data-src="https://placehold.co/1200x800/C1FFC1/333333?text=Painting+8+Large">
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about-us" class="mb-12 pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">About Me</h2>
+            <div class="max-w-2xl mx-auto text-gray-700 leading-relaxed">
+                <p class="mb-4">
+                    Hey there! I'm an artist with a passion for capturing the world through acrylics. I'm usually found with a brush in hand, letting the colors flow. Painting is my go-to for unwinding and just getting into a different headspace.
+                </p>
+                <p class="mb-4">
+                    My journey with art has been a lifelong one, evolving from simple sketches to complex acrylic pieces. I love experimenting with light, shadow, and texture to bring my subjects to life. Whether it's the vibrant energy of Glastonbury, the quiet beauty of a still life, or the majestic presence of animals, each piece tells a story.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Me Section -->
+        <section id="contact-me" class="pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Get in Touch</h2>
+            <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-xl shadow-md">
+                <p class="text-gray-700 mb-6 text-center">
+                    Have a question, a commission idea, or just want to chat about art? Feel free to reach out!
+                </p>
+                <form class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 shadow-lg">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 px-6 md:px-12 mt-8 rounded-t-xl">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="mb-4 md:mb-0">&copy; 2025 My Art Portfolio. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="https://facebook.com" target="_blank" class="text-white hover:text-blue-400 transition duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="text-white hover:text-pink-400 transition duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.715.01 3.67.058 1.05.05 1.79.215 2.42.465a4.9 4.9 0 011.77 1.15c.6.58 1.05 1.22 1.4 1.9.35.68.58 1.4.73 2.13.14.73.23 1.48.29 2.25.04.77.06 1.03.06 3.03s-.02 2.26-.06 3.03c-.06.77-.15 1.52-.29 2.25-.15.73-.38 1.45-.73 2.13-.35.68-.8 1.32-1.4 1.9a4.9 4.9 0 01-1.77 1.15c-.63.25-1.37.41-2.42.46-.95.05-1.24.06-3.67.06s-2.71-.01-3.67-.05c-1.05-.05-1.79-.21-2.42-.46a4.9 4.9 0 01-1.77-1.15c-.6-.58-1.05-1.22-1.4-1.9-.35-.68-.58-1.4-.73-2.13-.14-.73-.23-1.48-.29-2.25-.04-.77-.06-1.03-.06-3.03s.02-2.26.06-3.03c.06-.77.15-1.52.29-2.25.15-.73.38-1.45.73-2.13.35-.68.8-1.32 1.4-1.9a4.9 4.9 0 011.77-1.15c.63-.25 1.37-.41 2.42-.46C9.58 2.01 9.87 2 12.315 2zm0 2.16c-2.3 0-2.58.01-3.49.05-.9.04-1.47.19-1.98.37-.51.19-.9.44-1.23.77-.33.33-.58.72-.77 1.23-.19.51-.33 1.08-.37 1.98-.04.91-.05 1.19-.05 3.49s.01 2.58.05 3.49c.04.9.19 1.47.37 1.98.19.51.44.9.77 1.23.33.33.72.58 1.23.77.51.19 1.08.33 1.98.37.91.04 1.19.05 3.49.05s2.58-.01 3.49-.05c.9-.04 1.47-.19 1.98-.37.51-.19.9-.44 1.23-.77.33-.33.58-.72.77-1.23.19-.51.33-1.08.37-1.98.04-.91.05-1.19.05-3.49s-.01-2.58-.05-3.49c-.04-.9-.19-1.47-.37-1.98-.19-.51-.44-.9-.77-1.23-.33-.33-.72-.58-1.23-.77-.51-.19-1.08-.33-1.98-.37-.91-.04-1.19-.05-3.49-.05zm0 3.73c-2.4 0-4.34 1.94-4.34 4.34s1.94 4.34 4.34 4.34 4.34-1.94 4.34-4.34-1.94-4.34-4.34-4.34zm0 7.15a2.81 2.81 0 110-5.62 2.81 2.81 0 010 5.62zm6.27-8.56a1.01 1.01 0 110-2.02 1.01 1.01 0 010 2.02z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeLightbox = document.querySelector('.close-lightbox');
+            const galleryImages = document.querySelectorAll('.image-grid img');
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.style.display = 'flex'; // Use flex to center content
+                    lightboxImg.src = this.getAttribute('data-src'); // Use data-src for large image
+                });
+            });
+
+            closeLightbox.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                // Close lightbox if clicking outside the image itself
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            // Optional: Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
